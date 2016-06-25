@@ -9,6 +9,9 @@ public class Item {
     private float price;    //单价
     private int number;     //数量
 
+    //无参构造
+    public Item(){}
+
     //有参数构造
     public Item(String barcode, String name, String unit, float price){
         this.barcode = barcode;
@@ -17,7 +20,7 @@ public class Item {
         this.price = price;
         this.number = 1;
     }
-    //获取函数
+
     public String getBarcode(){
         return barcode;
     }
@@ -37,14 +40,22 @@ public class Item {
     public float getPrice(){
         return price;
     }
+
+    public void setPrice(float price){
+        this.price = price;
+    }
+
+    public void setBarcode(String barcode){ this.barcode=barcode; }
+
+    public void setName(String name){ this.name=name; }
+
+    public void setUnit(String unit){ this.unit=unit; }
+
     //单量加一
     public void addNum(){
         number+=1;
     }
-    //设置价格
-    public void setPrice(float price){
-        this.price = price;
-    }
+
     //返回总价
     public float allPrice(){
         return price*number;
