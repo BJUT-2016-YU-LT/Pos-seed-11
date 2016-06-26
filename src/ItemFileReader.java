@@ -35,6 +35,7 @@ public class ItemFileReader {
 
     /**
      * 读取商品索引文件,保存入List中
+     * 商品number均为0
      * @param fileName 打折文件名
      */
     public static List<Item> readGoodsIndexJSONToList(String fileName) {
@@ -44,10 +45,14 @@ public class ItemFileReader {
         //遍历map
         for(String key:map.keySet()){
             Item i=map.get(key);
-            list.add(new Item(key,i.getName(),i.getUnit(),i.getPrice(),i.getDiscount()));
+            list.add(new Item(key,i.getName(),i.getUnit(),i.getPrice(),i.getDiscount(),i.getPromotion()));
+        }
+        for(Item i:list){
+            i.setNumber(0);
         }
         return list;
     }
+
 
     /**
      * 读取商品列表文件,保存入List中
