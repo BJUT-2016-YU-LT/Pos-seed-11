@@ -21,6 +21,16 @@ public class ItemFileReader {
         return list;
     }
 
+    /**
+     * 读取打折文件内容,保存入List中
+     * @param fileName 打折文件名
+     */
+    public static List<Item> readDiscountJSONToList(String fileName) {
+        String str=readFileToString(fileName);
+        List<Item> list=JSON.parseArray(str,Item.class);
+        return list;
+    }
+
 
     /**
      * 读取文件所有内容到字符串

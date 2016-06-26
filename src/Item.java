@@ -8,6 +8,7 @@ public class Item {
     private String unit;    //单位
     private float price;    //单价
     private int number;     //数量
+    private float discount;     //折扣
 
     //无参构造
     public Item(){}
@@ -19,6 +20,16 @@ public class Item {
         this.unit = unit;
         this.price = price;
         this.number = 1;
+        this.discount=1;
+    }
+
+    public Item(String barcode, String name, String unit, float price,float discount){
+        this.barcode = barcode;
+        this.name = name;
+        this.unit = unit;
+        this.price = price;
+        this.number = 1;
+        this.discount=discount;
     }
 
     public String getBarcode(){
@@ -51,6 +62,10 @@ public class Item {
 
     public void setUnit(String unit){ this.unit=unit; }
 
+    public void setDiscount(float discount){this.discount=discount;}
+
+    public float getDiscount(){return discount;}
+
     //单量加一
     public void addNum(){
         number+=1;
@@ -58,8 +73,11 @@ public class Item {
 
     //返回总价
     public float allPrice(){
-        return price*number;
+        return price*number*discount;
     }
+
+    //返回节省价格
+    public float savePrice(){ return price*number*(1-discount);}
 
     public String toString(){
         return "名称：" + name + "，数量：" + number + unit + "，单价：" + String.format("%.2f",this.price) + "(元)，小计："
