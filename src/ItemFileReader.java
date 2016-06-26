@@ -2,9 +2,11 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Vector;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 
 /**
  * Created by zhukaihao on 16/6/22.
@@ -28,6 +30,32 @@ public class ItemFileReader {
     public static List<Item> readDiscountJSONToList(String fileName) {
         String str=readFileToString(fileName);
         List<Item> list=JSON.parseArray(str,Item.class);
+        return list;
+    }
+
+    /**
+     * 读取商品索引文件,保存入List中
+     * @param fileName 打折文件名
+     */
+    public static List<Item> readGoodsIndexJSONToList(String fileName) {
+        String str=readFileToString(fileName);
+        Map<String,Item> map=JSON.parseObject(str, new TypeReference<Map<String, Item>>() {});
+        List<Item> list=new ArrayList<>();
+        //遍历map
+        for(String key:map.keySet()){
+            Item i=map.get(key);
+            list.add(new Item(key,i.getName(),i.getUnit(),i.getPrice(),i.getDiscount()));
+        }
+        return list;
+    }
+
+    /**
+     * 读取商品列表文件,保存入List中
+     * @param fileName 打折文件名
+     */
+    public static List<String> readGoodsListJSONToList(String fileName) {
+        String str=readFileToString(fileName);
+        List<String> list=JSON.parseArray(str,String.class);
         return list;
     }
 
