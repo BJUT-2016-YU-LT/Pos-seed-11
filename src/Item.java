@@ -11,7 +11,9 @@ public class Item {
     private float discount;     //折扣
 
     //无参构造
-    public Item(){}
+    public Item(){
+        discount=1;
+    }
 
     //有参数构造
     public Item(String barcode, String name, String unit, float price){
