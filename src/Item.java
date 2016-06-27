@@ -9,10 +9,12 @@ public class Item {
     private float price;    //单价
     private int number;     //数量
     private float discount;     //折扣
+    boolean promotion;  //促销
 
     //无参构造
     public Item(){
         discount=1;
+        promotion=false;
     }
 
     //有参数构造
@@ -23,6 +25,7 @@ public class Item {
         this.price = price;
         this.number = 1;
         this.discount=1;
+        this.promotion=false;
     }
 
     public Item(String barcode, String name, String unit, float price,float discount){
@@ -32,6 +35,17 @@ public class Item {
         this.price = price;
         this.number = 1;
         this.discount=discount;
+        this.promotion=false;
+    }
+
+    public Item(String barcode, String name, String unit, float price,float discount,boolean promotion){
+        this.barcode = barcode;
+        this.name = name;
+        this.unit = unit;
+        this.price = price;
+        this.number = 1;
+        this.discount=discount;
+        this.promotion=promotion;
     }
 
     public String getBarcode(){
@@ -49,6 +63,8 @@ public class Item {
     public int getNumber(){
         return number;
     }
+
+    public void setNumber(int number){this.number=number;}
 
     public float getPrice(){
         return price;
@@ -68,6 +84,10 @@ public class Item {
 
     public float getDiscount(){return discount;}
 
+    public void setPromotion(boolean promotion){this.promotion=promotion;}
+
+    public boolean getPromotion(){return promotion;}
+
     //单量加一
     public void addNum(){
         number+=1;
@@ -75,11 +95,21 @@ public class Item {
 
     //返回总价
     public float allPrice(){
-        return price*number*discount;
+        if(!promotion) {
+            return price * number * discount;
+        }else{
+            return (number/2)*price+(number%2)*price;
+        }
     }
 
     //返回节省价格
-    public float savePrice(){ return price*number*(1-discount);}
+    public float savePrice(){
+        if(!promotion) {
+            return price * number * (1 - discount);
+        }else{
+            return price*(number/2);
+        }
+    }
 
     public String toString(){
         return "名称：" + name + "，数量：" + number + unit + "，单价：" + String.format("%.2f",this.price) + "(元)，小计："
