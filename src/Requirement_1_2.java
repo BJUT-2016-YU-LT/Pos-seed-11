@@ -7,7 +7,7 @@
 import java.util.*;
 
 
-public class Test_1 {
+public class Requirement_1_2 {
         public static void main(String[] args){
 
             //取得购物车信息,打折商品信息
