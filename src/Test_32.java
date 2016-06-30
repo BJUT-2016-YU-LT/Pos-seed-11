@@ -38,7 +38,7 @@ public class Test_32 {
         System.out.println("挥泪赠送商品:");
         for (Item i : cartIndex) {
             if(i.getPromotion()){
-                System.out.printf("名称:%s, 数量:%d%s\n", i.getName(),i.getNumber()/2,i.getUnit());
+                System.out.printf("名称:%s, 数量:%d%s\n", i.getName(),i.getNumber()/3,i.getUnit());
             }
         }
         System.out.println("----------------------");
