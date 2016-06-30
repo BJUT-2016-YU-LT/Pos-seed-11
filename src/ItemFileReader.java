@@ -45,7 +45,7 @@ public class ItemFileReader {
         //遍历map
         for(String key:map.keySet()){
             Item i=map.get(key);
-            list.add(new Item(key,i.getName(),i.getUnit(),i.getPrice(),i.getDiscount(),i.getPromotion()));
+            list.add(new Item(key,i.getName(),i.getUnit(),i.getPrice(),i.getDiscount(),i.getVipDiscount(),i.getPromotion()));
         }
         for(Item i:list){
             i.setNumber(0);
@@ -62,6 +62,33 @@ public class ItemFileReader {
         String str=readFileToString(fileName);
         List<String> list=JSON.parseArray(str,String.class);
         return list;
+    }
+
+
+    /**
+     * 读取用户列表文件,保存入List中
+     * @param fileName 用户列表
+     */
+    public static List<UserInfo> readUserListJSONToList(String fileName) {
+        String str=readFileToString(fileName);
+        Map<String, UserInfo> map=JSON.parseObject(str, new TypeReference<Map<String, UserInfo>>() {});
+        List<UserInfo> list=new ArrayList<>();
+        //遍历map
+        for(String key:map.keySet()){
+            UserInfo i=map.get(key);
+            list.add(new UserInfo(i.getName(),i.isVip()));
+        }
+        return list;
+    }
+
+    /**
+     * 读取用户商品列表,保存入UserGoods对象中
+     * @param fileName 打折文件名
+     */
+    public static UserGoods readUserGoodsListJSONToList(String fileName) {
+        String str=readFileToString(fileName);
+        UserGoods userGoods=JSON.parseObject(str,UserGoods.class);
+        return userGoods;
     }
 
 

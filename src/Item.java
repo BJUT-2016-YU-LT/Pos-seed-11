@@ -7,14 +7,13 @@ public class Item {
     private String name;    //名称
     private String unit;    //单位
     private float price;    //单价
-    private int number;     //数量
-    private float discount;     //折扣
-    boolean promotion;  //促销
+    private int number=1;     //数量
+    private float discount=1;     //折扣
+    private float vipDiscount=1; //会员折扣
+    private boolean promotion=false;  //促销
 
     //无参构造
     public Item(){
-        discount=1;
-        promotion=false;
     }
 
     //有参数构造
@@ -23,9 +22,6 @@ public class Item {
         this.name = name;
         this.unit = unit;
         this.price = price;
-        this.number = 1;
-        this.discount=1;
-        this.promotion=false;
     }
 
     public Item(String barcode, String name, String unit, float price,float discount){
@@ -33,9 +29,7 @@ public class Item {
         this.name = name;
         this.unit = unit;
         this.price = price;
-        this.number = 1;
         this.discount=discount;
-        this.promotion=false;
     }
 
     public Item(String barcode, String name, String unit, float price,float discount,boolean promotion){
@@ -43,8 +37,17 @@ public class Item {
         this.name = name;
         this.unit = unit;
         this.price = price;
-        this.number = 1;
         this.discount=discount;
+        this.promotion=promotion;
+    }
+
+    public Item(String barcode, String name, String unit, float price,float discount,float vipDiscount,boolean promotion){
+        this.barcode = barcode;
+        this.name = name;
+        this.unit = unit;
+        this.price = price;
+        this.discount=discount;
+        this.vipDiscount=vipDiscount;
         this.promotion=promotion;
     }
 
@@ -83,6 +86,10 @@ public class Item {
     public void setDiscount(float discount){this.discount=discount;}
 
     public float getDiscount(){return discount;}
+
+    public void setVipDiscount(float vipDiscount){this.vipDiscount=vipDiscount;}
+
+    public float getVipDiscount(){return vipDiscount;}
 
     public void setPromotion(boolean promotion){this.promotion=promotion;}
 
