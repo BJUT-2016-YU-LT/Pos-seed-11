@@ -10,3 +10,9 @@ out/.DS_Store
 out/production/.DS_Store
 
 out/.DS_Store
+
+*.class
+
+out/production/Pos/Test_4.class
+
+out/production/Pos/Item.class
