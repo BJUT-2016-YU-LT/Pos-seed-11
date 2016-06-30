@@ -6,7 +6,7 @@
 
 import java.util.*;
 
-public class Test_2 {
+public class Requirement_3 {
     public static void main(String[] args){
 
         //取得商品索引,商品列表

@@ -76,7 +76,7 @@ public class ItemFileReader {
         //遍历map
         for(String key:map.keySet()){
             UserInfo i=map.get(key);
-            list.add(new UserInfo(i.getName(),i.isVip()));
+            list.add(new UserInfo(i.getName(),i.isVip(),i.getGrades()));
         }
         return list;
     }
@@ -85,7 +85,7 @@ public class ItemFileReader {
      * 读取用户商品列表,保存入UserGoods对象中
      * @param fileName 打折文件名
      */
-    public static UserGoods readUserGoodsListJSONToList(String fileName) {
+    public static UserGoods readUserGoodsListJSONToUserGoods(String fileName) {
         String str=readFileToString(fileName);
         UserGoods userGoods=JSON.parseObject(str,UserGoods.class);
         return userGoods;

@@ -101,26 +101,40 @@ public class Item {
     }
 
     //返回总价
+    //不是会员
     public float allPrice(){
         if(!promotion) {
             return price * number * discount;
         }else{
-            return (number/2)*price+(number%2)*price;
+            return (number/3*2)*price+(number%3)*price;
         }
+    }
+    //是会员
+    public float allPriceOfVip(){
+        return price * number * discount*vipDiscount;
     }
 
     //返回节省价格
+    //不是会员
     public float savePrice(){
         if(!promotion) {
             return price * number * (1 - discount);
         }else{
-            return price*(number/2);
+            return price*(number/3);
         }
+    }
+    //是会员
+    public float savePriceOfVip(){
+        return price * number * (1 - discount*vipDiscount);
     }
 
     public String toString(){
         return "名称：" + name + "，数量：" + number + unit + "，单价：" + String.format("%.2f",this.price) + "(元)，小计："
                 + String.format("%.2f",allPrice())+ "(元)";
+    }
+    public String toStringOfVip(){
+        return "名称：" + name + "，数量：" + number + unit + "，单价：" + String.format("%.2f",this.price) + "(元)，小计："
+                + String.format("%.2f",allPriceOfVip())+ "(元)";
     }
 
 }

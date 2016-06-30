@@ -6,7 +6,7 @@
 
 import java.util.*;
 
-public class Test_3 {
+public class Requirement_4 {
     public static void main(String[] args) {
         //取得商品索引,商品列表
         List<Item> cartIndex = ItemFileReader.readGoodsIndexJSONToList("goods_promotion.json");

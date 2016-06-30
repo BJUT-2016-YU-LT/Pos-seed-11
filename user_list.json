@@ -1,14 +1,16 @@
 {
-    'USER0001': {
-        "name": 'USER 001',
-        "isVip": true
+    "USER0001": {
+        "name": "USER 001",
+        "isVip": true,
+        "grades":200
     },
-    'USER0002': {
-        "name": 'USER 002',
+    "USER0002": {
+        "name": "USER 002",
         "isVip": false
     },
-    'USER0003': {
-        "name": 'USER 003',
-        "isVip": true
+    "USER0003": {
+        "name": "USER 003",
+        "isVip": true,
+        "grades":10
     }
 }
