@@ -99,7 +99,7 @@ public class Requirement_5_6 {
                 System.out.println("挥泪赠送商品:");
                 for (Item i : goodsIndex) {
                     if (i.getPromotion()) {
-                        System.out.printf("名称:%s, 数量:%d瓶\n", i.getName(), i.getNumber() / 2);
+                        System.out.printf("名称:%s, 数量:%d%s\n", i.getName(),i.getUnit(),i.getNumber()/3);
                     }
                 }
                 System.out.println("----------------------");
