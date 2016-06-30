@@ -41,7 +41,7 @@ public class ItemFileReader {
     public static List<Item> readGoodsIndexJSONToList(String fileName) {
         String str=readFileToString(fileName);
         Map<String,Item> map=JSON.parseObject(str, new TypeReference<Map<String, Item>>() {});
-        List<Item> list=new ArrayList<>();
+        List<Item> list=new ArrayList<Item>();
         //遍历map
         for(String key:map.keySet()){
             Item i=map.get(key);
@@ -72,7 +72,7 @@ public class ItemFileReader {
     public static List<UserInfo> readUserListJSONToList(String fileName) {
         String str=readFileToString(fileName);
         Map<String, UserInfo> map=JSON.parseObject(str, new TypeReference<Map<String, UserInfo>>() {});
-        List<UserInfo> list=new ArrayList<>();
+        List<UserInfo> list=new ArrayList<UserInfo>();
         //遍历map
         for(String key:map.keySet()){
             UserInfo i=map.get(key);
@@ -87,7 +87,7 @@ public class ItemFileReader {
      */
     public static UserGoods readUserGoodsListJSONToUserGoods(String fileName) {
         String str=readFileToString(fileName);
-        UserGoods userGoods=JSON.parseObject(str,UserGoods.class);
+        UserGoods userGoods=JSON.parseObject(str, UserGoods.class);
         return userGoods;
     }
 
