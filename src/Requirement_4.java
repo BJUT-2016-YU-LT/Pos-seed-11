@@ -28,7 +28,9 @@ public class Requirement_4 {
         System.out.println("打印时间：2014年08月04日 08:09:05");
         System.out.println("----------------------");
         for (Item i : cartIndex) {
-            System.out.println(i.toString());
+            if (i.getNumber()!=0){
+                System.out.println(i.toString());
+            }
             allPrice += i.allPrice();
             savePrice += i.savePrice();
         }

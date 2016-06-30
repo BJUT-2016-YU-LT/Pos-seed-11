@@ -44,7 +44,9 @@ public class Requirement_1_2 {
             float savePrice=0;
             System.out.println("***商店购物清单***");
             for(Item i:items) {
-                System.out.println(i.toString());
+                if (i.getNumber()!=0){
+                    System.out.println(i.toString());
+                }
                 allPrice+=i.allPrice();
                 savePrice+=i.savePrice();
             }

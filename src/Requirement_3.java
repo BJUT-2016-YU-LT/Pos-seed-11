@@ -27,7 +27,9 @@ public class Requirement_3 {
         float savePrice=0;
         System.out.println("***商店购物清单***");
         for(Item i:cartIndex) {
-            System.out.println(i.toString());
+            if (i.getNumber()!=0){
+                System.out.println(i.toString());
+            }
             allPrice+=i.allPrice();
             savePrice+=i.savePrice();
         }
