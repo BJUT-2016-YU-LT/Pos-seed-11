@@ -3,7 +3,7 @@ import java.util.List;
 /**
  * Created by user on 2016/6/30.
  */
-public class test_5_6_2 {
+public class test_5_6_3 {
 
     public static void main(String[] args) {
 
@@ -11,10 +11,10 @@ public class test_5_6_2 {
         List<UserInfo> users = ItemFileReader.readUserListJSONToList("user_list.json");
 
         //取得商品索引列表
-        List<Item> goodsIndex=ItemFileReader.readGoodsIndexJSONToList("user_goods_index.json");
+        List<Item> goodsIndex=ItemFileReader.readGoodsIndexJSONToList("user_goods_index2.json");
 
         //取得用户商品列表
-        UserGoods userGoods=ItemFileReader.readUserGoodsListJSONToUserGoods("user_goods_list1.json");
+        UserGoods userGoods=ItemFileReader.readUserGoodsListJSONToUserGoods("user_goods_list2.json");
 
         //获取当前用户
         UserInfo user=new UserInfo();
@@ -98,7 +98,7 @@ public class test_5_6_2 {
                 System.out.println("挥泪赠送商品:");
                 for (Item i : goodsIndex) {
                     if (i.getPromotion()) {
-                        System.out.printf("名称:%s, 数量:%d%s\n", i.getName(), i.getNumber() / 2, i.getUnit());
+                        System.out.printf("名称:%s, 数量:%d%s\n", i.getName(), i.getNumber() / 2,i.getUnit());
                     }
                 }
                 System.out.println("----------------------");
