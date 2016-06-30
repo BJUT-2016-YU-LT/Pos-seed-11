@@ -5,7 +5,7 @@
 
 import java.util.*;
 
-public class Test_4 {
+public class Requirement_5_6 {
     public static void main(String[] args) {
 
         //取得用户列表
