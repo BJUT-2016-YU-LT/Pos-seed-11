@@ -111,5 +111,7 @@ public class Requirement_5_6 {
             System.out.printf("节省:%.2f(元)\n", savePrice);
         System.out.println("**********************");
 
+        ItemFileReader.writeUserToFile(user,"user_list.json");
+
     }
 }

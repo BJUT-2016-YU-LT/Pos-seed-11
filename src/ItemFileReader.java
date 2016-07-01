@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -117,6 +114,33 @@ public class ItemFileReader {
             e.printStackTrace();
         }
         return allstr;
+    }
+
+    /**
+     * 将会员信息写入文件
+     * @param user
+     * @param fileName
+     */
+    public static void writeUserToFile(UserInfo user,String fileName){
+        //读取现在的会员文件内容
+        String str=readFileToString(fileName);
+        Map<String, UserInfo> map=JSON.parseObject(str, new TypeReference<Map<String, UserInfo>>() {});
+        List<UserInfo> list=new ArrayList<UserInfo>();
+        //遍历map
+        for(UserInfo u:map.values()){
+            if(u.getName().equals(user.getName()))
+                u.setGrades(user.getGrades());
+        }
+        String userinfo=JSON.toJSONString(map);
+        try {
+            FileWriter fr = new FileWriter(fileName);
+            fr.write(userinfo);
+            fr.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
