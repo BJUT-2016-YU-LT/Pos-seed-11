@@ -1,4 +1,7 @@
+import java.util.ArrayList;
 import java.util.List;
+
+import static java.lang.System.exit;
 
 /**
  * Created by user on 2016/6/30.
@@ -8,10 +11,21 @@ public class test_5_6_3 {
     public static void main(String[] args) {
 
         //取得用户列表
-        List<UserInfo> users = ItemFileReader.readUserListJSONToList("user_list.json");
+        List<UserInfo> users = new ArrayList<UserInfo>();
+        try {
+            users = ItemFileReader.readUserListJSONToList("user_list.json");
+        }catch (WrongInputException e){
+            System.out.print(e.getMessage());
+        }
 
         //取得商品索引列表
-        List<Item> goodsIndex=ItemFileReader.readGoodsIndexJSONToList("user_goods_index2.json");
+        List<Item> goodsIndex = new ArrayList<Item>();
+        try {
+            goodsIndex=ItemFileReader.readGoodsIndexJSONToList("user_goods_index2.json");
+        }catch (WrongInputException e){
+            System.out.print(e.getMessage());
+            exit(0);
+        }
 
         //取得用户商品列表
         UserGoods userGoods=ItemFileReader.readUserGoodsListJSONToUserGoods("user_goods_list2.json");
