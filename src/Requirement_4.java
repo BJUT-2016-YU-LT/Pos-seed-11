@@ -6,10 +6,18 @@
 
 import java.util.*;
 
+import static java.lang.System.exit;
+
 public class Requirement_4 {
     public static void main(String[] args) {
         //取得商品索引,商品列表
-        List<Item> cartIndex = ItemFileReader.readGoodsIndexJSONToList("goods_promotion.json");
+        List<Item> cartIndex = new ArrayList<Item>();
+        try {
+            cartIndex=ItemFileReader.readGoodsIndexJSONToList("goods_promotion.json");
+        }catch (WrongInputException e){
+            System.out.print(e.getMessage());
+            exit(0);
+        }
         List<String> goodsList = ItemFileReader.readGoodsListJSONToList("goods_list_prom.json");
 
         //整理购物车信息

@@ -4,15 +4,29 @@
  */
 
 import java.util.*;
+import static java.lang.System.exit;
+
 
 public class Requirement_5_6 {
     public static void main(String[] args) {
 
         //取得用户列表
-        List<UserInfo> users = ItemFileReader.readUserListJSONToList("user_list.json");
+        List<UserInfo> users = new ArrayList<UserInfo>();
+        try {
+            users = ItemFileReader.readUserListJSONToList("user_list.json");
+        }catch (WrongInputException e){
+            System.out.print(e.getMessage());
+            exit(0);
+        }
 
         //取得商品索引列表
-        List<Item> goodsIndex=ItemFileReader.readGoodsIndexJSONToList("user_goods_index.json");
+        List<Item> goodsIndex = new ArrayList<Item>();
+        try {
+            goodsIndex=ItemFileReader.readGoodsIndexJSONToList("user_goods_index.json");
+        }catch (WrongInputException e){
+            System.out.print(e.getMessage());
+            exit(0);
+        }
 
         //取得用户商品列表
         UserGoods userGoods=ItemFileReader.readUserGoodsListJSONToUserGoods("user_goods_list.json");
@@ -111,7 +125,9 @@ public class Requirement_5_6 {
             System.out.printf("节省:%.2f(元)\n", savePrice);
         System.out.println("**********************");
 
-        ItemFileReader.writeUserToFile(user,"user_list.json");
+        if(user.isVip()) {
+            ItemFileReader.writeUserToFile(user, "user_list.json");
+        }
 
     }
 }

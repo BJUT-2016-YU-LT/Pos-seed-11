@@ -35,13 +35,16 @@ public class ItemFileReader {
      * 商品number均为0
      * @param fileName 打折文件名
      */
-    public static List<Item> readGoodsIndexJSONToList(String fileName) {
+    public static List<Item> readGoodsIndexJSONToList(String fileName)throws WrongInputException {
         String str=readFileToString(fileName);
         Map<String,Item> map=JSON.parseObject(str, new TypeReference<Map<String, Item>>() {});
         List<Item> list=new ArrayList<Item>();
         //遍历map
         for(String key:map.keySet()){
             Item i=map.get(key);
+            if(i.getPrice()<=0){
+                throw new WrongInputException(i.getName()+"商品单价错误");
+            }
             list.add(new Item(key,i.getName(),i.getUnit(),i.getPrice(),i.getDiscount(),i.getVipDiscount(),i.getPromotion()));
         }
         for(Item i:list){
@@ -63,16 +66,19 @@ public class ItemFileReader {
 
 
     /**
-     * 读取用户列表文件,保存入List中
+     * 读取会员列表文件,保存入List中
      * @param fileName 用户列表
      */
-    public static List<UserInfo> readUserListJSONToList(String fileName) {
+    public static List<UserInfo> readUserListJSONToList(String fileName) throws WrongInputException{
         String str=readFileToString(fileName);
         Map<String, UserInfo> map=JSON.parseObject(str, new TypeReference<Map<String, UserInfo>>() {});
         List<UserInfo> list=new ArrayList<UserInfo>();
         //遍历map
         for(String key:map.keySet()){
             UserInfo i=map.get(key);
+            if(i.getGrades()<0){
+                throw new WrongInputException(i.getName()+"会员积分错误");
+            }
             list.add(new UserInfo(i.getName(),i.isVip(),i.getGrades()));
         }
         return list;
@@ -131,7 +137,9 @@ public class ItemFileReader {
             if(u.getName().equals(user.getName()))
                 u.setGrades(user.getGrades());
         }
+        //转为json字符串
         String userinfo=JSON.toJSONString(map);
+        //写入文件
         try {
             FileWriter fr = new FileWriter(fileName);
             fr.write(userinfo);
