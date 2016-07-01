@@ -4,13 +4,13 @@
  */
 
 
-import java.util.*;
+import java.util.List;
 
-public class Requirement_4 {
+public class Test_32 {
     public static void main(String[] args) {
         //取得商品索引,商品列表
-        List<Item> cartIndex = ItemFileReader.readGoodsIndexJSONToList("goods_promotion.json");
-        List<String> goodsList = ItemFileReader.readGoodsListJSONToList("goods_list_prom.json");
+        List<Item> cartIndex = ItemFileReader.readGoodsIndexJSONToList("goods_promotion1.json");
+        List<String> goodsList = ItemFileReader.readGoodsListJSONToList("goods_list_prom1.json");
 
         //整理购物车信息
         for (String str : goodsList) {
@@ -38,7 +38,7 @@ public class Requirement_4 {
         System.out.println("挥泪赠送商品:");
         for (Item i : cartIndex) {
             if(i.getPromotion()){
-                System.out.printf("名称:%s, 数量:%d%s\n", i.getName(),i.getUnit(),i.getNumber()/3);
+                System.out.printf("名称:%s, 数量:%d%s\n", i.getName(),i.getNumber()/3,i.getUnit());
             }
         }
         System.out.println("----------------------");

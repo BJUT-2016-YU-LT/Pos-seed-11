@@ -6,7 +6,7 @@
 
 import java.util.*;
 
-public class Requirement_4 {
+public class Test_31 {
     public static void main(String[] args) {
         //取得商品索引,商品列表
         List<Item> cartIndex = ItemFileReader.readGoodsIndexJSONToList("goods_promotion.json");
@@ -38,7 +38,7 @@ public class Requirement_4 {
         System.out.println("挥泪赠送商品:");
         for (Item i : cartIndex) {
             if(i.getPromotion()){
-                System.out.printf("名称:%s, 数量:%d%s\n", i.getName(),i.getUnit(),i.getNumber()/3);
+                System.out.printf("名称:%s, 数量:%d%s\n", i.getName(),i.getNumber()/3,i.getUnit());
             }
         }
         System.out.println("----------------------");

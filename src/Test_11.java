@@ -7,7 +7,7 @@
 import java.util.*;
 
 
-public class Requirement_1_2 {
+public class Test_11 {
         public static void main(String[] args){
 
             //取得购物车信息,打折商品信息
@@ -39,6 +39,20 @@ public class Requirement_1_2 {
                     }
                 }
             }
+
+            //商品的减少与删除
+            for (Item k:items){
+                if(k.getBarcode().equals("ITEM000000")){
+                    k.setNumber(k.getNumber()-1);
+                }
+            }
+
+            for (Item l:items){
+                if (l.getBarcode().equals("ITEM000004")){
+                    l.setNumber(0);
+                }
+            }
+
             //输出
             float allPrice=0;
             float savePrice=0;

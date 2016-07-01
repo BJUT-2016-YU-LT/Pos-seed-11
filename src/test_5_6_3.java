@@ -1,21 +1,20 @@
+import java.util.List;
+
 /**
- * Created by zhukaihao on 16/6/30.
- * 迭代3测试文件
+ * Created by user on 2016/6/30.
  */
+public class test_5_6_3 {
 
-import java.util.*;
-
-public class Requirement_5_6 {
     public static void main(String[] args) {
 
         //取得用户列表
         List<UserInfo> users = ItemFileReader.readUserListJSONToList("user_list.json");
 
         //取得商品索引列表
-        List<Item> goodsIndex=ItemFileReader.readGoodsIndexJSONToList("user_goods_index.json");
+        List<Item> goodsIndex=ItemFileReader.readGoodsIndexJSONToList("user_goods_index2.json");
 
         //取得用户商品列表
-        UserGoods userGoods=ItemFileReader.readUserGoodsListJSONToUserGoods("user_goods_list.json");
+        UserGoods userGoods=ItemFileReader.readUserGoodsListJSONToUserGoods("user_goods_list2.json");
 
         //获取当前用户
         UserInfo user=new UserInfo();
@@ -99,7 +98,7 @@ public class Requirement_5_6 {
                 System.out.println("挥泪赠送商品:");
                 for (Item i : goodsIndex) {
                     if (i.getPromotion()) {
-                        System.out.printf("名称:%s, 数量:%d%s\n", i.getName(),i.getUnit(),i.getNumber()/3);
+                        System.out.printf("名称:%s, 数量:%d%s\n", i.getName(), i.getNumber() / 3,i.getUnit());
                     }
                 }
                 System.out.println("----------------------");
@@ -110,8 +109,6 @@ public class Requirement_5_6 {
         if (savePrice != 0)
             System.out.printf("节省:%.2f(元)\n", savePrice);
         System.out.println("**********************");
-
-        ItemFileReader.writeUserToFile(user,"user_list.json");
 
     }
 }

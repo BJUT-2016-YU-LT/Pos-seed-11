@@ -1,11 +1,9 @@
+import java.util.List;
+
 /**
- * Created by zhukaihao on 16/6/30.
- * 迭代3测试文件
+ * Created by user on 2016/6/30.
  */
-
-import java.util.*;
-
-public class Requirement_5_6 {
+public class test_5_6_1 {
     public static void main(String[] args) {
 
         //取得用户列表
@@ -99,7 +97,7 @@ public class Requirement_5_6 {
                 System.out.println("挥泪赠送商品:");
                 for (Item i : goodsIndex) {
                     if (i.getPromotion()) {
-                        System.out.printf("名称:%s, 数量:%d%s\n", i.getName(),i.getUnit(),i.getNumber()/3);
+                        System.out.printf("名称:%s, 数量:%d%s\n", i.getName(), i.getNumber() / 3, i.getUnit());
                     }
                 }
                 System.out.println("----------------------");
@@ -111,7 +109,6 @@ public class Requirement_5_6 {
             System.out.printf("节省:%.2f(元)\n", savePrice);
         System.out.println("**********************");
 
-        ItemFileReader.writeUserToFile(user,"user_list.json");
-
     }
+
 }
